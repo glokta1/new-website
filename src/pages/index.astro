@@ -1,11 +1,77 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import profileImg from "../assets/profile.jpeg";
+import { Image } from "astro:assets";
 const pageTitle = "Home Page";
 ---
 
 <BaseLayout pageTitle="About Me">
-  <p>
-    This is the home page. It's a great place to be. You should stick around for
-    a while.
+  <Image
+    src={profileImg}
+    alt="A photo of me."
+    width={300}
+    height={300}
+    class="mb-4 object-cover"
+  />
+  <p class="text-lg">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, modi eum
+    sapiente saepe sunt minus aliquam voluptatum enim, vitae autem quae nostrum
+    eos sit culpa beatae perferendis placeat eius maiores? Lorem ipsum dolor sit
+    amet consectetur adipisicing elit. Explicabo praesentium recusandae
+    veritatis consequuntur voluptatibus quibusdam incidunt omnis et ducimus
+    voluptate dolore sequi dolores fugiat repellendus, sunt aspernatur doloribus
+    dignissimos id non assumenda optio eius nostrum ipsa! Velit hic voluptates
+    facere dolorum ullam ducimus reiciendis vitae id illum. Non officia
+    voluptate neque id nisi perspiciatis iusto est culpa laboriosam doloribus!
+    Quia deserunt voluptates eaque corrupti excepturi sed at vero quaerat modi?
+    Magni repudiandae veritatis iure rem pariatur facere ipsum aliquam
+    voluptatibus veniam, cum dolorem unde illo dolore odio. Numquam quis aliquid
+    <a href="youtube.com">sunt</a> sunt nam cumque magnam iusto similique maxime,
+    r.
+  </p>
+  <br />
+  <p class="text-lg">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, modi eum
+    sapiente saepe sunt minus aliquam voluptatum enim, vitae autem quae nostrum
+    eos sit culpa beatae perferendis placeat eius maiores? Lorem ipsum dolor sit
+    amet consectetur adipisicing elit. Explicabo praesentium recusandae
+    veritatis consequuntur voluptatibus quibusdam incidunt omnis et ducimus
+    voluptate dolore sequi dolores fugiat repellendus, sunt aspernatur doloribus
+    dignissimos id non assumenda optio eius nostrum ipsa! Velit hic voluptates
+    facere dolorum ullam ducimus reiciendis vitae id illum. Non officia
+    voluptate neque id nisi perspiciatis iusto est culpa laboriosam doloribus!
+    Quia deserunt voluptates eaque corrupti excepturi sed at vero quaerat modi?
+    Magni repudiandae veritatis iure rem pariatur facere ipsum aliquam
+    voluptatibus veniam, cum dolorem unde illo dolore odio. Numquam quis aliquid
+    <a href="youtube.com">sunt</a> sunt nam cumque magnam iusto similique maxime,
+    r.
+  </p>
+  <br />
+  <p class="text-lg">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, modi eum
+    sapiente saepe sunt minus aliquam voluptatum enim, vitae autem quae nostrum
+    eos sit culpa beatae perferendis placeat eius maiores? Lorem ipsum dolor sit
+    amet consectetur adipisicing elit. Explicabo praesentium recusandae
+    veritatis consequuntur voluptatibus quibusdam incidunt omnis et ducimus
+    voluptate dolore sequi dolores fugiat repellendus, sunt aspernatur doloribus
+    dignissimos id non assumenda optio eius nostrum ipsa! Velit hic voluptates
+    facere dolorum ullam ducimus reiciendis vitae id illum. Non officia
+    voluptate neque id nisi perspiciatis iusto est culpa laboriosam doloribus!
+    Quia deserunt voluptates eaque corrupti excepturi sed at vero quaerat modi?
+    Magni repudiandae veritatis iure rem pariatur facere ipsum aliquam
+    voluptatibus veniam, cum dolorem unde illo dolore odio. Numquam quis aliquid
+    <a href="youtube.com">sunt</a> sunt nam cumque magnam iusto similique maxime,
+    r.
   </p>
 </BaseLayout>
+
+<style>
+  a {
+    text-decoration: underline;
+    text-decoration-color: gray;
+  }
+  a:hover {
+    background-color: rgb(254 249 195);
+    text-decoration: underline;
+  }
+</style>
