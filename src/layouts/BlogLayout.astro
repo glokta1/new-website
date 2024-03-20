@@ -1,0 +1,16 @@
+---
+const { frontmatter } = Astro.props;
+let date = new Date(frontmatter.pubDate);
+let formattedDate = new Intl.DateTimeFormat("en-US", {
+  day: "numeric",
+  month: "long",
+}).format(date);
+
+import BaseLayout from "./BaseLayout.astro";
+---
+
+<BaseLayout>
+  <h1 class="text-xl font-bold">{frontmatter.title}</h1>
+  <p class="mb-4 text-gray-500">{formattedDate}</p>
+  <slot />
+</BaseLayout>

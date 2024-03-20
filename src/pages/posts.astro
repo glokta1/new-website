@@ -1,5 +1,78 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+const allPosts = await Astro.glob("./posts/*.md");
+allPosts.sort(
+  (a, b) =>
+    Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate)
+);
+const postsByYear: { [year: number]: any[] } = {};
+
+const moonLanding = new Date("1969-07-20");
+allPosts.forEach((post) => {
+  const year = new Date(post.frontmatter.pubDate).getFullYear();
+  if (!postsByYear[year]) {
+    postsByYear[year] = [];
+  }
+  postsByYear[year].push(post);
+});
+
+const sortedYears = Object.keys(postsByYear).sort(
+  (a, b) => Number(b) - Number(a)
+);
 ---
 
-<BaseLayout pageTitle="Posts" />
+<BaseLayout pageTitle="Posts">
+  <ol>
+    {
+      sortedYears.map((year) => (
+        <li>
+          <h2 class="text-lg font-semibold py-4">{year}</h2>
+          <ul>
+            {postsByYear[year].map((post) => (
+              <li class="flex justify-between">
+                <a
+                  class="text-pink-600 hover:bg-pink-600 hover:text-white transition-colors"
+                  href={post.url}
+                >
+                  {post.frontmatter.title}
+                </a>
+                <span class="text-gray-500">
+                  {new Date(post.frontmatter.pubDate).toLocaleString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))
+    }
+  </ol>
+</BaseLayout>
+{
+  Object.entries(postsByYear).map(([year, posts]) => (
+    <li>
+      <h2 class="text-lg font-semibold py-4">{year}</h2>
+      <ul>
+        {posts.map((post) => (
+          <li class="flex justify-between">
+            <a
+              class="text-pink-600 hover:bg-pink-600 hover:text-white transition-colors"
+              href={post.url}
+            >
+              {post.frontmatter.title}
+            </a>
+            <span class="text-gray-500">Mar 12</span>
+          </li>
+        ))}
+      </ul>
+    </li>
+  ))
+}
+
+<style>
+  nav a {
+    text-decoration: underline;
+  }
+</style>
