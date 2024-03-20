@@ -9,11 +9,11 @@ cover:
 
 A top-down approach to learning can be succinctly summarized by the following quotes:
 
-> "Don't miss the forest for the trees."
+> Don't miss the forest for the trees.
 
-> _"You can't see the picture when you're inside the frame"_
+> You can't see the picture when you're inside the frame
 
-> _"Don't get lost in the weeds."_
+> Don't get lost in the weeds.
 
 <!-- {{<figure src="https://padaseva.in/wp-content/uploads/2019/12/elephant-blind-men.jpg" caption="Blind Elephant" width="80%" align="center">}} -->
 <!-- {{<figure src="https://padaseva.in/wp-content/uploads/2019/12/elephant-blind-men.jpg" caption="Blind Elephant" width="80%" align="center">}} -->
@@ -38,9 +38,9 @@ Before coding a CLI application, think about how someone will use it and work ba
 
 This initial planning saves you tons of rewrites and headaches later on and **_ensures the design guides the implementation, not the other way around._**
 
-- okay
-- okay
-- four
+1. okay
+2. okay
+3. four
 
 <!--
 {{<figure src="https://cdn.hashnode.com/res/hashnode/image/upload/v1677566893823/f9ef3fbe-6554-48df-a77d-62dce50e17d1.png?auto=compress,format&format=webp" caption="Planning for a PDF processing CLI tool" align=center >}} -->

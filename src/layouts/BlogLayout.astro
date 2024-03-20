@@ -10,7 +10,7 @@ import BaseLayout from "./BaseLayout.astro";
 ---
 
 <BaseLayout>
-  <h1 class="text-xl font-bold">{frontmatter.title}</h1>
-  <p class="mb-4 text-gray-500">{formattedDate}</p>
-  <slot />
+  <h1 class="text-3xl font-bold">{frontmatter.title}</h1>
+  <p class="mb-8 text-gray-500 text-lg">{formattedDate}</p>
+  <article class="prose"><slot /></article>
 </BaseLayout>

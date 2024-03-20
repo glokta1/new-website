@@ -50,29 +50,9 @@ const sortedYears = Object.keys(postsByYear).sort(
     }
   </ol>
 </BaseLayout>
-{
-  Object.entries(postsByYear).map(([year, posts]) => (
-    <li>
-      <h2 class="text-lg font-semibold py-4">{year}</h2>
-      <ul>
-        {posts.map((post) => (
-          <li class="flex justify-between">
-            <a
-              class="text-pink-600 hover:bg-pink-600 hover:text-white transition-colors"
-              href={post.url}
-            >
-              {post.frontmatter.title}
-            </a>
-            <span class="text-gray-500">Mar 12</span>
-          </li>
-        ))}
-      </ul>
-    </li>
-  ))
-}
 
 <style>
-  nav a {
-    text-decoration: underline;
+  a {
+    text-decoration: none;
   }
 </style>

@@ -1,5 +1,12 @@
-a {
-    color: #0070f3;
-    text-decoration: none;
-    font-weight: bold;
+ a {
+    color: rgb(219 39 119);
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    text-decoration: underline;
+}
+
+a:hover {
+    background-color: rgb(219 39 119);
+    color: white;
 }
