@@ -25,8 +25,7 @@ Instead of getting bogged down in details, it emphasizes looking at a helicopter
 
 As Khalid Azad, says, it's like going from "blurry-to-sharp".
 
-<!--
-{{<figure src="/baseline_vs_progressive.png.webp" caption="The traditional bottom-up approach vs a top-down approach" align="center">}} -->
+![blurry to sharp](../../assets/baseline_vs_progressive.png)
 
 ## Where can I use this?
 
@@ -37,10 +36,6 @@ The universality of this approach makes it an extremely powerful tool in your ar
 Before coding a CLI application, think about how someone will use it and work backwards towards the implementation. What features will it have? What will be the commands that will implement them? What flags will be coupled with each command?
 
 This initial planning saves you tons of rewrites and headaches later on and **_ensures the design guides the implementation, not the other way around._**
-
-1. okay
-2. okay
-3. four
 
 <!--
 {{<figure src="https://cdn.hashnode.com/res/hashnode/image/upload/v1677566893823/f9ef3fbe-6554-48df-a77d-62dce50e17d1.png?auto=compress,format&format=webp" caption="Planning for a PDF processing CLI tool" align=center >}} -->
