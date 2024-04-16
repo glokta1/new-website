@@ -29,7 +29,7 @@ const sortedYears = Object.keys(postsByYear).sort(
           <h2 class="text-xl font-semibold py-4">{year}</h2>
           <ul>
             {postsByYear[year].map((post) => (
-              <li class="flex justify-between">
+              <li class="flex justify-between space-x-4">
                 <a
                   class="text-pink-600 hover:bg-pink-600 hover:text-white transition-colors"
                   href={post.url}
