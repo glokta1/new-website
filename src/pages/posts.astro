@@ -21,11 +21,14 @@ const sortedYears = Object.keys(postsByYear).sort(
 );
 ---
 
-<BaseLayout pageTitle="Posts">
+<BaseLayout
+  pageTitle="Posts"
+  subtitle="I write about what I'm learning, internet culture and productivity"
+>
   <ol>
     {
       sortedYears.map((year: any) => (
-        <li>
+        <>
           <h2 class="text-xl font-semibold py-4">{year}</h2>
           <ul>
             {postsByYear[year].map((post: any) => (
@@ -45,7 +48,7 @@ const sortedYears = Object.keys(postsByYear).sort(
               </li>
             ))}
           </ul>
-        </li>
+        </>
       ))
     }
   </ol>

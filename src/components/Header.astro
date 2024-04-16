@@ -2,36 +2,25 @@
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.split("/")[1];
 console.log(currentPath);
+
+const navItems = ["about", "now", "posts", "projects", "uses"];
 ---
 
 <header class="flex flex-col sm:flex-row items-center justify-between py-2">
-  <a href="/" class="text-lg font-semibold">Rafey Ahmad</a>
+  <a href="/" class="text-xl font-semibold">Rafey Ahmad</a>
   <nav class="flex gap-6">
-    <a
-      href="/about"
-      class=`lowercase  text-gray-400 ${currentPath === "" ? "text-pink-600 font-bold" : ""}`
-      >Home</a
-    >
-    <a
-      href="/now"
-      class=`lowercase text-gray-400 ${currentPath === "now" ? "text-pink-600 font-bold " : ""}`
-      >Now</a
-    >
-    <a
-      href="/posts"
-      class=`lowercase text-gray-400 ${currentPath === "posts" ? "text-pink-600 font-bold " : ""}`
-      >Posts</a
-    >
-    <a
-      href="/projects"
-      class=`lowercase  text-gray-400 ${currentPath === "projects" ? "text-pink-600 font-bold " : ""}`
-      >Projects</a
-    >
-    <a
-      href="/resume"
-      class=`lowercase text-gray-400 ${currentPath === "resume" ? "text-pink-600 font-bold " : ""}`
-      >Resume</a
-    >
+    {
+      navItems.map((item) => {
+        return (
+          <a
+            href={`/${item}`}
+            class={`lowercase text-gray-400 ${currentPath === item ? "text-pink-600 font-bold" : ""}`}
+          >
+            {item}
+          </a>
+        );
+      })
+    }
   </nav>
 </header>
 
