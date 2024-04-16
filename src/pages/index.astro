@@ -2,10 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import profileImg from "../assets/profile.jpeg";
 import { Image } from "astro:assets";
-const pageTitle = "Home Page";
+const pageTitle = "Home";
 ---
 
-<BaseLayout pageTitle="About Me">
+<BaseLayout pageTitle={pageTitle}>
   <Image
     src={profileImg}
     alt="A photo of me."
