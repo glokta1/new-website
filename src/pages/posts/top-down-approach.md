@@ -25,7 +25,7 @@ Instead of getting bogged down in details, it emphasizes looking at a helicopter
 
 As Khalid Azad, says, it's like going from "blurry-to-sharp".
 
-![blurry to sharp](../../assets/baseline_vs_progressive.png)
+![blurry to sharp](../../assets/baseline_vs_progressive.webp)
 
 ## Where can I use this?
 
