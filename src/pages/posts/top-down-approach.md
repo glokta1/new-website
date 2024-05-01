@@ -19,7 +19,7 @@ A top-down approach to learning can be succinctly summarized by the following qu
 <!-- {{<figure src="https://padaseva.in/wp-content/uploads/2019/12/elephant-blind-men.jpg" caption="Blind Elephant" width="80%" align="center">}} -->
 <!-- {{<figure src="https://padaseva.in/wp-content/uploads/2019/12/elephant-blind-men.jpg" caption="Blind Elephant" width="80%" align="center">}} -->
 
-![elephant image](https://padaseva.in/wp-content/uploads/2019/12/elephant-blind-men.jpg)
+![elephant image](../../assets/elephant-blind-men.webp)
 
 Instead of getting bogged down in details, it emphasizes looking at a helicopter-view of the topic, learning how each of the subtopics/components _interact_ before learning about each of them individually. Each subtopic/component is treated as a 'black box' with its _details_ abstracted away.
 
@@ -36,13 +36,14 @@ The universality of this approach makes it an extremely powerful tool in your ar
 Before coding a CLI application, think about how someone will use it and work backwards towards the implementation. What features will it have? What will be the commands that will implement them? What flags will be coupled with each command?
 
 This initial planning saves you tons of rewrites and headaches later on and **_ensures the design guides the implementation, not the other way around._**
+![PDF planning CLI](../../assets/pdf-cli-planning.avif)
 
 <!--
 {{<figure src="https://cdn.hashnode.com/res/hashnode/image/upload/v1677566893823/f9ef3fbe-6554-48df-a77d-62dce50e17d1.png?auto=compress,format&format=webp" caption="Planning for a PDF processing CLI tool" align=center >}} -->
 
 ### Writing
 
-- Build an outline of the main points before elaborating on its details. I wrote this article using this approach :
+- Build an outline of the main points before elaborating on its details. I wrote this article using this approach :)
 
 ### Studying for exams
 
