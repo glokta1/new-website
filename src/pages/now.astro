@@ -1,10 +1,9 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-const pageTitle = "Now";
+import PageLayout from "../layouts/PageLayout.astro";
 ---
 
-<BaseLayout pageTitle={pageTitle} subtitle={`Here's what I'm up to right now`}>
+<PageLayout title="Now" subtitle="Here's what I'm up to right now">
   <h2 class="text-xl font-semibold">Reading</h2>
   <h2 class="text-xl font-semibold">Watching</h2>
   <h2 class="text-xl font-semibold">Playing</h2>
-</BaseLayout>
+</PageLayout>

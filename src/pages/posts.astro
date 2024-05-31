@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-const allPosts = await Astro.glob("./posts/*.md");
+import PageLayout from "../layouts/PageLayout.astro";
+const allPosts = await Astro.glob("./posts/*.mdx");
 allPosts.sort(
   (a, b) =>
     Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate)
@@ -21,8 +21,8 @@ const sortedYears = Object.keys(postsByYear).sort(
 );
 ---
 
-<BaseLayout
-  pageTitle="Posts"
+<PageLayout
+  title="Posts"
   subtitle="I write about what I'm learning, internet culture and productivity"
 >
   <ol>
@@ -52,7 +52,7 @@ const sortedYears = Object.keys(postsByYear).sort(
       ))
     }
   </ol>
-</BaseLayout>
+</PageLayout>
 
 <style>
   a {
