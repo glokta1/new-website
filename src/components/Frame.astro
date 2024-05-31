@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 const { src, caption } = Astro.props;
 ---
 
-<figure>
-  <img src={src} alt="Elephant at sunset" />
-  <figcaption>{caption}</figcaption>
+<figure class="flex flex-col items-center">
+  <Image src={src} alt={caption} />
+  <figcaption class="text-center">{caption}</figcaption>
 </figure>
