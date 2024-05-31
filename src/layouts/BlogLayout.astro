@@ -13,4 +13,6 @@ import BaseLayout from "./BaseLayout.astro";
   <h1 class="text-3xl font-bold">{frontmatter.title}</h1>
   <p class="mb-8 text-gray-400">{formattedDate}</p>
   <article class="prose mb-4"><slot /></article>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </BaseLayout>
