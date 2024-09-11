@@ -1,10 +1,17 @@
 ---
 import { Image } from "astro:assets";
 
-const { src, caption } = Astro.props;
+const { src, caption, height, width } = Astro.props;
 ---
 
 <figure class="flex flex-col items-center">
-  <Image src={src} alt={caption} inferSize={true}/>
+  <Image
+    src={src}
+    alt={caption}
+    inferSize={true}
+    height={height}
+    width={width}
+    class="drop-shadow-xl"
+  />
   <figcaption class="text-center">{caption}</figcaption>
 </figure>
