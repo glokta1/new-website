@@ -7,14 +7,14 @@ const navItems = ["about", "now", "posts", "projects", "uses"];
 ---
 
 <header class="flex flex-col sm:flex-row items-center justify-between py-2">
-  <a href="/" class="text-xl font-semibold hover:underline">Rafey Ahmad</a>
+  <a href="/" class="text-xl font-semibold hover:opacity-65">Rafey Ahmad</a>
   <nav class="flex gap-6">
     {
       navItems.map((item) => {
         return (
           <a
             href={`/${item}`}
-            class={`lowercase text-gray-400 hover:underline ${currentPath === item ? "text-pink-600 font-bold" : ""}`}
+            class={`lowercase text-gray-400 hover:text-pink-600 hover:font-bold ${currentPath === item ? "text-pink-600 font-bold" : ""}`}
           >
             {item}
           </a>

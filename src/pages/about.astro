@@ -1,17 +1,21 @@
 ---
 import Frame from "../components/Frame.astro";
 import PageLayout from "../layouts/PageLayout.astro";
+import khalidAzadImg from "../assets/khalid_azad.jpeg";
+import kailashNadhImg from "../assets/kailash_nadh.jpg";
 ---
 
 <PageLayout title="About" subtitle="Get to know me better">
   <div class="prose">
     <p>
       Hi! My name is Rafey. I'm a final year CS student. I'm currently working
-      at <a href="https://codecrafters.io/">CodeCrafters(YC S22)</a> as a technical
-      writer and software developer.
+      at <a href="https://telecrm.in">TeleCRM</a> as an SWE intern. I previously
+      worked at <a href="https://codecrafters.io/">CodeCrafters(YC S22)</a> as a
+      technical writer and software developer.
     </p>
     <p>
-      Outside of programming, I like playing football and reading fantasy novels. My favorite authors are Joe Abercrombie and Brandon Sanderson.
+      Outside of programming, I like playing football and reading fantasy
+      novels. My favorite authors are Joe Abercrombie and Brandon Sanderson.
     </p>
     <h2>Some people I admire</h2>
     <p>
@@ -19,12 +23,7 @@ import PageLayout from "../layouts/PageLayout.astro";
       continue to influence the way I approach things.
     </p>
     <h3>Khalid Azad</h3>
-    <Frame
-      src="https://betterexplained.com/examples/images/KalidAzadPhoto2023.jpeg"
-      caption="Khalid Azad"
-      height="200"
-      width="200"
-    />
+    <Frame src={khalidAzadImg} caption="Khalid Azad" height="200" width="200" />
     <p>
       Many years ago, I was scouring the internet for intuitive explanations
       about imaginary numbers. That's when I came across an <a
@@ -32,12 +31,12 @@ import PageLayout from "../layouts/PageLayout.astro";
         >article</a
       > on Khalid Azad's blog, <a href="https://betterexplained.com/"
         >BetterExplained</a
-      >. Instead of bombarding me with technical jargon, he
-      used analogies to give me a rough idea of what the concept was about. He
-      used pictures and lots and lots of examples to make this rough
-      understanding more concrete. He came at it from different angles to ensure
-      I understood its essence. Only and only then, did he introduce the Proper
-      Technical Definition. I'd struck gold.
+      >. Instead of bombarding me with technical jargon, he used analogies to
+      give me a rough idea of what the concept was about. He used pictures and
+      lots and lots of examples to make this rough understanding more concrete.
+      He came at it from different angles to ensure I understood its essence.
+      Only and only then, did he introduce the Proper Technical Definition. I'd
+      struck gold.
     </p>
     <p>
       I still remember the sheer joy bubbling inside of me after the concept
@@ -55,10 +54,10 @@ import PageLayout from "../layouts/PageLayout.astro";
     My dad is my inspiration. He is probably the smartest guy I have met. His curiosity
     and hunger to learn things is infectious. He inculcated the habit of reading
     in me. He lent me his copy of <i>Let us C</i>, my first introduction to
-    programming. 
+    programming.
     <h3>Kailash Nadh</h3>
     <Frame
-      src="https://nadh.in/static/images/kailash-2023.jpg"
+      src={kailashNadhImg}
       caption="Kailash Nadh (CTO, Zerodha)"
       height="200"
       width="200"
