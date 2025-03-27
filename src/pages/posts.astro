@@ -4,7 +4,7 @@ import PageLayout from "../layouts/PageLayout.astro";
 const allPosts = await getCollection("posts");
 allPosts.sort(
   (a, b) =>
-  new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
 const postsByYear: { [year: number]: any[] } = {};
 
@@ -40,7 +40,7 @@ const sortedYears = Object.keys(postsByYear).sort(
                 >
                   {post.data.title}
                 </a>
-                <span>
+                <span class="text-gray-400">
                   {new Date(post.data.pubDate).toLocaleString("en-US", {
                     month: "short",
                     day: "numeric",
