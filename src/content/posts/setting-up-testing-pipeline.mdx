@@ -1,0 +1,44 @@
+---
+title: "Setting up the testing pipeline"
+pubDate: 2025-03-28
+draft: false
+---
+
+## Intentions
+- I want the codebase to be well-tested from the onset. Each feature should ship with automated tests. A feature is not considered "done" until it has tests in place. 
+- The goal is not to chase after 100% test coverage. Writing tests has a cost – it could have been spent actually improving the user experience (fixing bugs, adding features). Tests are for the developer. As the complexity of the codebase grows, it becomes harder to keep track of dependencies between components in your head.  Tests allow rapid development of a feature without worrying about silently breaking 4 other things. It allows large refactors with the peace of mind that nothing was unintentionally broken.
+
+## Goals
+The testing pipeline should satisfy the following requirements to be considered a success:
+- All tests must be executable locally. This ensures quick feedback during development.
+- Quick to run. Anything > 10s will break the developer's flow and they'll stop running them.
+- All tests should be independent of one another. Each test should create the data it needs and clean up after itself once finished.
+
+I will be setting up my testing pipeline based on the best practices outlined in the following articles:
+- [goldberyoni/nodejs-testing-best-practices](https://github.com/goldbergyoni/nodejs-testing-best-practices)
+- [Tao of Node](https://alexkondov.com/tao-of-node/#testing)
+
+## The meat
+
+### 1. Using a separate test DB
+Having a separate test DB ensures isolation from the dev environment. Any mishaps during testing don't affect the dev DB and vice versa.
+
+Since I'm already using Docker Compose to manage external dependencies, this step is as simple as adding a new Postgres `test-db` service inside the `compose.yaml` file.
+
+```yaml
+# compose.yaml
+test-db:
+    image: postgres:17
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_DB: postgres_test
+    ports:
+        - 6302:5432
+```
+
+Now, running `docker compose up -d` also spins up a container for the test DB listening on `http://localhost:6302`
+
+### 2. Ensure test DB has the latest schema
+
+We need some way load the latest schema in the test DB instance. Migrations are our friend.
