@@ -1,15 +1,17 @@
 ---
 import { getCollection } from "astro:content";
 import PageLayout from "../layouts/PageLayout.astro";
-const allPosts = await getCollection("posts");
-allPosts.sort(
+const publishedPosts = await getCollection("posts", ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+});
+
+publishedPosts.sort(
   (a, b) =>
     new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
 const postsByYear: { [year: number]: any[] } = {};
 
-const moonLanding = new Date("1969-07-20");
-allPosts.forEach((post) => {
+publishedPosts.forEach((post) => {
   const year = new Date(post.data.pubDate).getFullYear();
   if (!postsByYear[year]) {
     postsByYear[year] = [];
@@ -36,11 +38,11 @@ const sortedYears = Object.keys(postsByYear).sort(
               <li class="flex justify-between space-x-4">
                 <a
                   class="text-pink-600 hover:bg-pink-600 hover:text-white transition-colors"
-                  href={`/posts/${post.slug}`}
+                  href={`/posts/${post.id}`}
                 >
                   {post.data.title}
                 </a>
-                <span class="text-gray-400">
+                <span class="text-gray-500">
                   {new Date(post.data.pubDate).toLocaleString("en-US", {
                     month: "short",
                     day: "numeric",
