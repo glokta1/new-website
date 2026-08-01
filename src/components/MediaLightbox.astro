@@ -1,0 +1,126 @@
+<div
+  class="media-lightbox"
+  data-media-lightbox
+  role="dialog"
+  aria-modal="true"
+  aria-label="Media preview"
+  aria-hidden="true"
+  hidden
+>
+  <button class="media-lightbox__close" type="button" aria-label="Close media preview">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="media-lightbox__content" data-media-lightbox-content></div>
+</div>
+
+<script>
+  const lightbox = document.querySelector<HTMLElement>("[data-media-lightbox]");
+  const content = lightbox?.querySelector<HTMLElement>("[data-media-lightbox-content]");
+  const closeButton = lightbox?.querySelector<HTMLButtonElement>(".media-lightbox__close");
+
+  let trigger: HTMLElement | null = null;
+  let previousOverflow = "";
+
+  const closeLightbox = () => {
+    if (!lightbox || lightbox.hidden) return;
+
+    const video = content?.querySelector("video");
+    video?.pause();
+    content?.replaceChildren();
+
+    lightbox.classList.remove("is-active");
+    lightbox.hidden = true;
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = previousOverflow;
+    trigger?.focus({ preventScroll: true });
+    trigger = null;
+  };
+
+  const previewSource = (image: HTMLImageElement) => {
+    const linkedSource = image.closest<HTMLAnchorElement>("a[href]")?.href;
+    return linkedSource && /\.(avif|gif|jpe?g|png|svg|webp)(?:[?#].*)?$/i.test(linkedSource)
+      ? linkedSource
+      : image.currentSrc || image.src;
+  };
+
+  const mediaCaption = (media: HTMLImageElement | HTMLVideoElement) => {
+    const figureCaption = media.closest("figure")?.querySelector("figcaption")?.textContent?.trim();
+    if (figureCaption) return figureCaption;
+
+    return (
+      media.dataset.caption?.trim() ||
+      (media instanceof HTMLImageElement ? media.alt.trim() : "") ||
+      media.getAttribute("aria-label")?.trim() ||
+      media.title.trim()
+    );
+  };
+
+  const openLightbox = (media: HTMLImageElement | HTMLVideoElement) => {
+    if (!lightbox || !content || !closeButton) return;
+
+    trigger = media;
+    let preview: HTMLImageElement | HTMLVideoElement;
+
+    if (media instanceof HTMLVideoElement) {
+      preview = media.cloneNode(true) as HTMLVideoElement;
+      preview.controls = true;
+      preview.autoplay = false;
+      preview.removeAttribute("id");
+    } else {
+      preview = document.createElement("img");
+      preview.src = previewSource(media);
+      preview.alt = media.alt;
+      preview.decoding = "async";
+    }
+
+    preview.className = "media-lightbox__media";
+    const captionText = mediaCaption(media);
+    const caption = document.createElement("p");
+    caption.className = "media-lightbox__caption";
+    caption.textContent = captionText;
+    content.replaceChildren(preview, ...(captionText ? [caption] : []));
+    previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    lightbox.hidden = false;
+    lightbox.setAttribute("aria-hidden", "false");
+    lightbox.classList.add("is-active");
+    closeButton.focus({ preventScroll: true });
+  };
+
+  const mediaElements = document.querySelectorAll<HTMLImageElement | HTMLVideoElement>(
+    "img:not([data-lightbox-ignore]), video:not([data-lightbox-ignore])",
+  );
+
+  mediaElements.forEach((media) => {
+    media.classList.add("media-lightbox-trigger");
+    media.tabIndex = media.tabIndex >= 0 ? media.tabIndex : 0;
+    media.setAttribute("role", "button");
+    media.setAttribute(
+      "aria-label",
+      media instanceof HTMLImageElement && media.alt
+        ? `Preview image: ${media.alt}`
+        : "Preview media",
+    );
+
+    media.addEventListener("click", (event) => {
+      event.preventDefault();
+      openLightbox(media);
+    });
+
+    media.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openLightbox(media);
+      }
+    });
+  });
+
+  closeButton?.addEventListener("click", closeLightbox);
+  lightbox?.addEventListener("click", (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeLightbox();
+  });
+</script>
