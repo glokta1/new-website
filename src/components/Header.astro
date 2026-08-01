@@ -19,10 +19,18 @@ const navItems = ["about", "now", "posts", "projects", "uses"];
         return (
           <a
             href={`/${item}`}
-            class={`lowercase text-gray-400 hover:text-pink-600 hover:font-bold ${currentPath === item ? "text-pink-600 font-bold" : ""}`}
+            class={`relative lowercase text-gray-400 transition-colors hover:text-pink-600 ${currentPath === item ? "text-pink-600" : ""}`}
             aria-current={currentPath === item ? "page" : undefined}
           >
             {item}
+            {
+              currentPath === item && (
+                <span
+                  class="absolute -bottom-2 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-pink-600"
+                  aria-hidden="true"
+                />
+              )
+            }
           </a>
         );
       })
