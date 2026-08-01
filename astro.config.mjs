@@ -5,5 +5,8 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), mdx()]
+  image: {
+    domains: ["cdn.hashnode.com"],
+  },
+  integrations: [tailwind(), mdx()],
 });
