@@ -9,10 +9,25 @@ export default {
   theme: {
     extend: {
       colors: {
-        accent: "#526d82",
+        accent: "#9f1239",
       },
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            a: {
+              color: "#9f1239",
+              textDecoration: "none",
+              "&:hover": {
+                color: "#881337",
+                textDecoration: "underline",
+                textUnderlineOffset: "2px",
+              },
+            },
+          },
+        },
       },
     },
   },
