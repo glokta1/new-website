@@ -7,26 +7,32 @@ const year = new Date().getFullYear();
     <div>
       <h2 class="font-semibold">Get in touch</h2>
       <p class="mt-1 text-sm text-gray-500">
-        Have a question or want to work together?
+        Have a question or want to work together?{" "}
         <a
-          class="text-pink-600 hover:bg-pink-600 hover:text-white"
+          class="text-accent underline decoration-transparent underline-offset-2 hover:decoration-current"
           href="mailto:rafeyahmad@outlook.com">Send me an email</a
         >.
       </p>
     </div>
 
-    <nav class="flex flex-wrap gap-4 text-sm" aria-label="Social links">
-      <a class="hover:text-pink-600" href="https://github.com/glokta1">GitHub</a
-      >
-      <a class="hover:text-pink-600" href="https://x.com/rafeytwt">X/Twitter</a>
+    <nav class="flex flex-wrap gap-x-4 text-sm" aria-label="Social links">
       <a
-        class="hover:text-pink-600"
+        class="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-accent hover:underline"
+        href="https://github.com/glokta1">GitHub</a
+      >
+      <a
+        class="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-accent hover:underline"
+        href="https://x.com/rafeytwt">X/Twitter</a
+      >
+      <a
+        class="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-accent hover:underline"
         href="https://www.linkedin.com/in/rafeyahmad">LinkedIn</a
       >
-      <a class="hover:text-pink-600" href="mailto:rafeyahmad@outlook.com"
-        >Email</a
+      <a
+        class="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-accent hover:underline"
+        href="mailto:rafeyahmad@outlook.com">Email</a
       >
     </nav>
   </div>
-  <p class="mt-6 text-xs text-gray-400">© {year} Rafey Ahmad</p>
+  <p class="mt-6 text-xs text-gray-500">© {year} Rafey Ahmad</p>
 </footer>

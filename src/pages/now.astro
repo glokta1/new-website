@@ -1,17 +1,27 @@
 ---
+import { stat } from "node:fs/promises";
 import PageLayout from "../layouts/PageLayout.astro";
+
+const { mtime: lastUpdated } = await stat(new URL(import.meta.url));
+const formattedLastUpdated = new Intl.DateTimeFormat("en-US", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+}).format(lastUpdated);
 ---
 
 <PageLayout title="Now" subtitle="Here's what I'm up to right now">
   <div class="prose">
     <p class="text-sm text-gray-500">
-      Last updated <time datetime="2026-08-01">August 1, 2026</time>
+      Last updated <time datetime={lastUpdated.toISOString()}
+        >{formattedLastUpdated}</time
+      >
     </p>
 
     <h2>Reading</h2>
-    <p><cite>Best Served Cold</cite> by Joe Abercrombie</p>
+    <p><cite>Amritsar: Mrs Gandhi's Last Battle</cite> by Mark Tully and Satish Jacob</p>
 
     <h2>Watching</h2>
-    <p><cite>Slow Horses</cite></p>
+    <p><cite>Happy Valley</cite> — Season 2</p>
   </div>
 </PageLayout>

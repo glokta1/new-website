@@ -5,28 +5,33 @@ const currentPath = pathname.split("/")[1];
 const navItems = ["about", "now", "posts", "projects", "uses"];
 ---
 
-<header class="flex flex-col sm:flex-row items-center justify-between gap-3 py-3">
+<header
+  class="flex flex-col items-center justify-between gap-1 py-1 sm:flex-row sm:gap-3 sm:py-3"
+>
   <a
     href="/"
-    class="text-xl font-semibold hover:opacity-65"
+    class="inline-flex min-h-11 items-center text-xl font-semibold hover:opacity-65 sm:min-h-0"
     aria-current={currentPath === "" ? "page" : undefined}
   >
     Rafey Ahmad
   </a>
-  <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2" aria-label="Main navigation">
+  <nav
+    class="grid w-full grid-cols-5 text-sm sm:flex sm:w-auto sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-2 sm:text-base"
+    aria-label="Main navigation"
+  >
     {
       navItems.map((item) => {
         return (
           <a
             href={`/${item}`}
-            class={`relative lowercase text-gray-400 transition-colors hover:text-pink-600 ${currentPath === item ? "text-pink-600" : ""}`}
+            class={`relative flex min-h-11 items-center justify-center lowercase text-gray-500 transition-colors hover:text-accent sm:min-h-0 ${currentPath === item ? "text-accent" : ""}`}
             aria-current={currentPath === item ? "page" : undefined}
           >
             {item}
             {
               currentPath === item && (
                 <span
-                  class="absolute -bottom-2 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-pink-600"
+                  class="absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-accent sm:-bottom-2"
                   aria-hidden="true"
                 />
               )

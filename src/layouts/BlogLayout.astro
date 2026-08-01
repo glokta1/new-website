@@ -17,13 +17,8 @@ const formattedDate = new Intl.DateTimeFormat("en-US", {
   publishedTime={date.toISOString()}
 >
   <h1 class="mb-2 text-3xl font-bold">{frontmatter.title}</h1>
-  <p class="mb-8 text-gray-400">
+  <p class="mb-8 text-gray-500">
     <time datetime={date.toISOString()}>{formattedDate}</time>
   </p>
   <article class="prose mb-4"><slot /></article>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script
-    id="MathJax-script"
-    async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </BaseLayout>

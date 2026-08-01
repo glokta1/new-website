@@ -8,6 +8,9 @@ export default {
   },
   theme: {
     extend: {
+      colors: {
+        accent: "#526d82",
+      },
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },

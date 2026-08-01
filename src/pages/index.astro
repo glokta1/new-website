@@ -14,14 +14,23 @@ const latestPosts = (
   .slice(0, 3);
 ---
 
-<BaseLayout description="Rafey Ahmad is a software developer who writes about software, learning, and the internet.">
-  <section class="flex flex-col-reverse items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
+<BaseLayout
+  description="Rafey Ahmad is a software developer who writes about software, learning, and the internet."
+>
+  <section
+    class="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8"
+  >
     <div class="max-w-md">
-      <h1 class="text-4xl font-bold tracking-tight">Hi, I'm Rafey.</h1>
+      <h1 class="text-4xl font-bold tracking-tight">
+        Hi, I'm Rafey. <span
+          class="inline-block whitespace-nowrap align-middle text-base font-normal text-gray-500"
+          >(RAA-fay)</span
+        >
+      </h1>
       <p class="mt-4 text-lg leading-relaxed text-gray-700">
         I'm a software developer at <a
-          class="text-pink-600 hover:bg-pink-600 hover:text-white"
-          href="https://telecrm.in">TeleCRM</a
+          class="text-accent underline decoration-transparent underline-offset-2 hover:decoration-current"
+          href="https://telecrm.in">Telecrm</a
         >. I care about simple software, clear explanations, and learning things
         deeply.
       </p>
@@ -29,12 +38,15 @@ const latestPosts = (
         This is where I write about software, learning, internet culture, and
         whatever else has my attention.
       </p>
-      <div class="mt-6 flex gap-4">
+      <div class="mt-4 flex gap-4">
         <a
-          class="font-semibold text-pink-600 hover:bg-pink-600 hover:text-white"
+          class="inline-flex min-h-11 items-center font-semibold text-accent underline decoration-transparent underline-offset-2 hover:decoration-current"
           href="/posts">Read my writing →</a
         >
-        <a class="font-semibold hover:text-pink-600" href="/about">More about me</a>
+        <a
+          class="inline-flex min-h-11 items-center font-semibold hover:text-accent"
+          href="/about">More about me</a
+        >
       </div>
     </div>
 
@@ -44,14 +56,17 @@ const latestPosts = (
       width={220}
       height={220}
       fit="cover"
-      class="aspect-square rounded-full object-cover shadow-sm"
+      class="aspect-square h-40 w-40 rounded-full object-cover shadow-sm sm:h-[220px] sm:w-[220px]"
     />
   </section>
 
   <section class="mt-16" aria-labelledby="latest-writing">
     <div class="flex items-baseline justify-between gap-4">
       <h2 id="latest-writing" class="text-2xl font-bold">Latest writing</h2>
-      <a class="text-sm text-gray-500 hover:text-pink-600" href="/posts">View all</a>
+      <a
+        class="inline-flex min-h-11 items-center text-sm text-gray-500 hover:text-accent"
+        href="/posts">View all</a
+      >
     </div>
 
     <ol class="mt-5 space-y-4">
@@ -59,13 +74,13 @@ const latestPosts = (
         latestPosts.map((post) => (
           <li class="flex items-baseline justify-between gap-6">
             <a
-              class="font-medium text-pink-600 hover:bg-pink-600 hover:text-white"
+              class="inline-flex min-h-11 items-center font-medium text-accent underline decoration-transparent underline-offset-2 hover:decoration-current"
               href={`/posts/${post.id}`}
             >
               {post.data.title}
             </a>
             <time
-              class="shrink-0 text-sm text-gray-400"
+              class="shrink-0 whitespace-nowrap text-sm text-gray-500"
               datetime={post.data.pubDate.toISOString()}
             >
               {post.data.pubDate.toLocaleDateString("en-US", {
@@ -79,7 +94,7 @@ const latestPosts = (
     </ol>
   </section>
 
-  <aside class="mt-14 border-l-2 border-pink-500 pl-4 text-sm text-gray-500">
+  <aside class="mt-14 border-l-2 border-accent pl-4 text-sm text-gray-500">
     This website is intentionally simple and lightweight: no SPA, no elements
     flying in from every direction, and no awful gradients.
   </aside>
