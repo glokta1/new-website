@@ -3,9 +3,15 @@ import PageLayout from "../layouts/PageLayout.astro";
 ---
 
 <PageLayout title="Now" subtitle="Here's what I'm up to right now">
-  <h2 class="text-xl font-semibold">Reading</h2>
-  Best Served Cold by Joe Abercrombie
-  <h2 class="text-xl font-semibold">Watching</h2>
-  Slow Horses
-  <h2 class="text-xl font-semibold">Playing</h2>
+  <div class="prose">
+    <p class="text-sm text-gray-500">
+      Last updated <time datetime="2026-08-01">August 1, 2026</time>
+    </p>
+
+    <h2>Reading</h2>
+    <p><cite>Best Served Cold</cite> by Joe Abercrombie</p>
+
+    <h2>Watching</h2>
+    <p><cite>Slow Horses</cite></p>
+  </div>
 </PageLayout>

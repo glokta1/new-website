@@ -1,12 +1,22 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
 const { title, subtitle } = Astro.props;
 ---
 
-<BaseLayout>
-  <h1 class="text-3xl font-bold">
-    {title}
-  </h1>
-  <p class="mb-6 text-gray-500">{subtitle}</p>
+<BaseLayout title={title} description={subtitle}>
+  {
+    title && (
+      <h1 class="text-3xl font-bold">
+        {title}
+      </h1>
+    )
+  }
+  {subtitle && <p class="mb-6 text-gray-500">{subtitle}</p>}
   <slot />
 </BaseLayout>

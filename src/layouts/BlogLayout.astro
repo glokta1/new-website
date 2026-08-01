@@ -1,17 +1,25 @@
 ---
+import BaseLayout from "./BaseLayout.astro";
+
 const { frontmatter } = Astro.props;
-let date = new Date(frontmatter.pubDate);
-let formattedDate = new Intl.DateTimeFormat("en-US", {
+const date = new Date(frontmatter.pubDate);
+const formattedDate = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
   month: "long",
+  year: "numeric",
 }).format(date);
-
-import BaseLayout from "./BaseLayout.astro";
 ---
 
-<BaseLayout>
-  <h1 class="text-3xl font-bold mb-2">{frontmatter.title}</h1>
-  <p class="mb-8 text-gray-400">{formattedDate}</p>
+<BaseLayout
+  title={frontmatter.title}
+  description={frontmatter.description ?? `Read ${frontmatter.title} by Rafey Ahmad.`}
+  type="article"
+  publishedTime={date.toISOString()}
+>
+  <h1 class="mb-2 text-3xl font-bold">{frontmatter.title}</h1>
+  <p class="mb-8 text-gray-400">
+    <time datetime={date.toISOString()}>{formattedDate}</time>
+  </p>
   <article class="prose mb-4"><slot /></article>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script

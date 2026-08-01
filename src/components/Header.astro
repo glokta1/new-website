@@ -1,20 +1,26 @@
 ---
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.split("/")[1];
-console.log(currentPath);
 
 const navItems = ["about", "now", "posts", "projects", "uses"];
 ---
 
-<header class="flex flex-col sm:flex-row items-center justify-between py-2">
-  <a href="/" class="text-xl font-semibold hover:opacity-65">Rafey Ahmad</a>
-  <nav class="flex gap-6">
+<header class="flex flex-col sm:flex-row items-center justify-between gap-3 py-3">
+  <a
+    href="/"
+    class="text-xl font-semibold hover:opacity-65"
+    aria-current={currentPath === "" ? "page" : undefined}
+  >
+    Rafey Ahmad
+  </a>
+  <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2" aria-label="Main navigation">
     {
       navItems.map((item) => {
         return (
           <a
             href={`/${item}`}
             class={`lowercase text-gray-400 hover:text-pink-600 hover:font-bold ${currentPath === item ? "text-pink-600 font-bold" : ""}`}
+            aria-current={currentPath === item ? "page" : undefined}
           >
             {item}
           </a>

@@ -1,13 +1,32 @@
-<footer class="flex justify-around py-4">
-  <a href="https://www.github.com/glokta1">github</a>
-  <a href="https://www.twitter.com/rafeytwt">twitter</a>
-  <a href="https://www.linkedin.com/in/rafeyahmad">linkedin</a>
-  <a href="mailto:rafeyahmad@outlook.com">email</a>
-</footer>
+---
+const year = new Date().getFullYear();
+---
 
-<style>
-  a {
-    color: blue;
-    text-decoration: underline;
-  }
-</style>
+<footer class="mt-12 border-t border-gray-300 py-8">
+  <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+    <div>
+      <h2 class="font-semibold">Get in touch</h2>
+      <p class="mt-1 text-sm text-gray-500">
+        Have a question or want to work together?
+        <a
+          class="text-pink-600 hover:bg-pink-600 hover:text-white"
+          href="mailto:rafeyahmad@outlook.com">Send me an email</a
+        >.
+      </p>
+    </div>
+
+    <nav class="flex flex-wrap gap-4 text-sm" aria-label="Social links">
+      <a class="hover:text-pink-600" href="https://github.com/glokta1">GitHub</a
+      >
+      <a class="hover:text-pink-600" href="https://x.com/rafeytwt">X/Twitter</a>
+      <a
+        class="hover:text-pink-600"
+        href="https://www.linkedin.com/in/rafeyahmad">LinkedIn</a
+      >
+      <a class="hover:text-pink-600" href="mailto:rafeyahmad@outlook.com"
+        >Email</a
+      >
+    </nav>
+  </div>
+  <p class="mt-6 text-xs text-gray-400">© {year} Rafey Ahmad</p>
+</footer>

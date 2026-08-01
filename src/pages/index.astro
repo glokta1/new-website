@@ -1,36 +1,86 @@
 ---
-import profileImg from "../assets/profile.jpeg";
 import { Image } from "astro:assets";
-import PageLayout from "../layouts/PageLayout.astro";
-import Frame from "../components/Frame.astro";
+import { getCollection } from "astro:content";
+import profileImg from "../assets/profile.jpeg";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const latestPosts = (
+  await getCollection("posts", ({ data }) => data.draft !== true)
+)
+  .sort(
+    (a, b) =>
+      new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
+  )
+  .slice(0, 3);
 ---
 
-<PageLayout>
-  <div class="prose">
-    <Frame
+<BaseLayout description="Rafey Ahmad is a software developer who writes about software, learning, and the internet.">
+  <section class="flex flex-col-reverse items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
+    <div class="max-w-md">
+      <h1 class="text-4xl font-bold tracking-tight">Hi, I'm Rafey.</h1>
+      <p class="mt-4 text-lg leading-relaxed text-gray-700">
+        I'm a software developer at <a
+          class="text-pink-600 hover:bg-pink-600 hover:text-white"
+          href="https://telecrm.in">TeleCRM</a
+        >. I care about simple software, clear explanations, and learning things
+        deeply.
+      </p>
+      <p class="mt-4 leading-relaxed text-gray-600">
+        This is where I write about software, learning, internet culture, and
+        whatever else has my attention.
+      </p>
+      <div class="mt-6 flex gap-4">
+        <a
+          class="font-semibold text-pink-600 hover:bg-pink-600 hover:text-white"
+          href="/posts">Read my writing →</a
+        >
+        <a class="font-semibold hover:text-pink-600" href="/about">More about me</a>
+      </div>
+    </div>
+
+    <Image
       src={profileImg}
-      caption="Hi :)"
-      width={300}
-      height={300}
-      class="mb-4 object-cover"
+      alt="Rafey Ahmad"
+      width={220}
+      height={220}
+      fit="cover"
+      class="aspect-square rounded-full object-cover shadow-sm"
     />
-    <p>
-      This website is kept intentionally simple and lightweight. No SPA, no
-      elements flying in left and right, no awful gradients sapiente saepe sunt
-      minus aliquam voluptatum enim, vitae autem quae nostrum eos sit culpa
-      beatae perferendis placeat eius maiores? Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Explicabo praesentium recusandae veritatis
-      consequuntur voluptatibus quibusdam incidunt omnis et ducimus voluptate
-      dolore sequi dolores fugiat repellendus, sunt aspernatur doloribus
-      dignissimos id non assumenda optio eius nostrum ipsa! Velit hic voluptates
-      facere dolorum ullam ducimus reiciendis vitae id illum. Non officia
-      voluptate neque id nisi perspiciatis iusto est culpa laboriosam doloribus!
-      Quia deserunt voluptates eaque corrupti excepturi sed at vero quaerat
-      modi? Magni repudiandae veritatis iure rem pariatur facere ipsum aliquam
-      voluptatibus veniam, cum dolorem unde illo dolore odio. Numquam quis
-      aliquid
-      <a href="youtube.com">sunt</a> sunt nam cumque magnam iusto similique maxime,
-      r.
-    </p>
-  </div>
-</PageLayout>
+  </section>
+
+  <section class="mt-16" aria-labelledby="latest-writing">
+    <div class="flex items-baseline justify-between gap-4">
+      <h2 id="latest-writing" class="text-2xl font-bold">Latest writing</h2>
+      <a class="text-sm text-gray-500 hover:text-pink-600" href="/posts">View all</a>
+    </div>
+
+    <ol class="mt-5 space-y-4">
+      {
+        latestPosts.map((post) => (
+          <li class="flex items-baseline justify-between gap-6">
+            <a
+              class="font-medium text-pink-600 hover:bg-pink-600 hover:text-white"
+              href={`/posts/${post.id}`}
+            >
+              {post.data.title}
+            </a>
+            <time
+              class="shrink-0 text-sm text-gray-400"
+              datetime={post.data.pubDate.toISOString()}
+            >
+              {post.data.pubDate.toLocaleDateString("en-US", {
+                month: "short",
+                year: "numeric",
+              })}
+            </time>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <aside class="mt-14 border-l-2 border-pink-500 pl-4 text-sm text-gray-500">
+    This website is intentionally simple and lightweight: no SPA, no elements
+    flying in from every direction, and no awful gradients.
+  </aside>
+</BaseLayout>
